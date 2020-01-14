@@ -1,12 +1,37 @@
 import React, { Component } from "react";
+import GoodBoiMeter from "./GoodBoiMeter";
+import DogViewer from "./DogViewer";
+
+import "./App.css";
+import "../utilities.css";
 
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      breed: 'pembroke'
+    }
+  }
+
+  onKeyDown = (event) => {
+    if (event.keyCode === 13) { // 13 is the enter key 
+      this.setState({
+        breed: event.target.value
+      });
+      event.target.value = '';
+    }
   }
 
   render() {
-    return (<div>Make me into a todo list!</div>);
+    const { breed } = this.state;
+    return (
+      <div className="u-flex u-flexColumn u-flex-alignCenter">
+        <label className="App-label" for="dog-breed">enter dog breed: </label>
+        <input onKeyDown={this.onKeyDown} id="dog-breed" />
+        <GoodBoiMeter breed={breed} />
+        <DogViewer breed={breed} />
+      </div>
+    );
   }
 }
 

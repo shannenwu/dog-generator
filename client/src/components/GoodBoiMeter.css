@@ -1,0 +1,11 @@
+.GoodBoiMeter-wrapper {
+    width: 50%;
+}
+
+.GoodBoiMeter-label {
+    margin: 8px 0px;
+}
+
+.GoodBoiMeter-meter {
+    width: 100%;
+}
