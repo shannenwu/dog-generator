@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import loadingImage from "../public/dog_bed.jpg";
+import badImage from "../public/daisy_dukes.png";
 import { get } from "../utilities";
 import './DogViewer.css';
 
@@ -14,12 +15,19 @@ class DogViewer extends Component {
 
   fetchDog = async () => {
     const { breed } = this.props;
-    const response = await get(`https://dog.ceo/api/breed/${breed}/images/random`);
 
-    this.setState({
-      imageLink: response.message,
-      loading: false
-    });
+    try {
+      const response = await get(`https://dog.ceo/api/breed/${breed}/images/random`);
+      this.setState({
+        imageLink: response.message,
+        loading: false
+      });
+    } catch {
+      this.setState({
+        imageLink: badImage,
+        loading: false
+      });
+    }
   }
 
   simulateLongLoading = (cb) => {
