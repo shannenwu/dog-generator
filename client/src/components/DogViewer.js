@@ -2,22 +2,24 @@ import React, { Component } from "react";
 import loadingImage from "../public/dog_bed.jpg";
 import badImage from "../public/daisy_dukes.png";
 import { get } from "../utilities";
-import './DogViewer.css';
+import "./DogViewer.css";
 
 class DogViewer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      imageLink: '',
+      imageLink: "",
       loading: true
-    }
+    };
   }
 
   fetchDog = async () => {
     const { breed } = this.props;
 
     try {
-      const response = await get(`https://dog.ceo/api/breed/${breed}/images/random`);
+      const response = await get(
+        `https://dog.ceo/api/breed/${breed}/images/random`
+      );
       this.setState({
         imageLink: response.message,
         loading: false
@@ -28,18 +30,21 @@ class DogViewer extends Component {
         loading: false
       });
     }
-  }
+  };
 
-  simulateLongLoading = (cb) => {
+  simulateLongLoading = cb => {
     setTimeout(cb, 1000);
-  }
+  };
 
   componentDidMount() {
     this.simulateLongLoading(this.fetchDog);
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.breed !== this.props.breed) {
+    if (
+      prevProps.breed !== this.props.breed ||
+      prevProps.iteration != this.props.iteration
+    ) {
       this.setState({
         loading: true
       });
@@ -51,7 +56,10 @@ class DogViewer extends Component {
     const { imageLink, loading } = this.state;
     return (
       <div className="DogViewer-wrapper">
-        <img className="DogViewer-img" src={loading ? loadingImage : imageLink} />
+        <img
+          className="DogViewer-img"
+          src={loading ? loadingImage : imageLink}
+        />
       </div>
     );
   }

@@ -9,27 +9,39 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      breed: 'pembroke'
-    }
+      breed: "pembroke",
+      iteration: 0
+    };
   }
 
-  onKeyDown = (event) => {
-    if (event.keyCode === 13) { // 13 is the enter key 
-      this.setState({
-        breed: event.target.value
-      });
-      event.target.value = '';
+  onKeyDown = event => {
+    if (event.keyCode === 13) {
+      // 13 is the enter key
+      if (event.target.value === "") {
+        // refresh the current dog if you just hit enter
+        this.setState({
+          iteration: this.state.iteration + 1
+        });
+      } else {
+        // load a new dog if you typed a breed
+        this.setState({
+          breed: event.target.value
+        });
+        event.target.value = "";
+      }
     }
-  }
+  };
 
   render() {
-    const { breed } = this.state;
+    const { breed, iteration } = this.state;
     return (
       <div className="u-flex u-flexColumn u-flex-alignCenter">
-        <label className="App-label" for="dog-breed">enter dog breed: </label>
+        <label className="App-label" for="dog-breed">
+          enter dog breed:{" "}
+        </label>
         <input onKeyDown={this.onKeyDown} id="dog-breed" />
         <GoodBoiMeter breed={breed} />
-        <DogViewer breed={breed} />
+        <DogViewer breed={breed} iteration={iteration} />
       </div>
     );
   }
