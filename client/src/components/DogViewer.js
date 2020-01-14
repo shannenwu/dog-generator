@@ -33,7 +33,7 @@ class DogViewer extends Component {
   };
 
   simulateLongLoading = cb => {
-    setTimeout(cb, 1000);
+    setTimeout(cb, 500);
   };
 
   componentDidMount() {
