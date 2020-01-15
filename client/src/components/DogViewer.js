@@ -36,18 +36,6 @@ class DogViewer extends Component {
     this.fetchDog();
   }
 
-  componentDidUpdate(prevProps) {
-    if (
-      prevProps.breed !== this.props.breed ||
-      prevProps.iteration != this.props.iteration
-    ) {
-      this.setState({
-        loading: true
-      });
-      this.fetchDog();
-    }
-  }
-
   render() {
     const { imageLink, loading } = this.state;
     return (
