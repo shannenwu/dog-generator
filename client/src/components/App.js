@@ -36,7 +36,7 @@ class App extends Component {
     const { breed, iteration } = this.state;
     return (
       <div className="u-flex u-flexColumn u-flex-alignCenter">
-        <label className="App-label" for="dog-breed">
+        <label className="App-label" htmlFor="dog-breed">
           enter dog breed:{" "}
         </label>
         <input onKeyDown={this.onKeyDown} id="dog-breed" />
