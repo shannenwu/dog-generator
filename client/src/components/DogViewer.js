@@ -32,12 +32,8 @@ class DogViewer extends Component {
     }
   };
 
-  simulateLongLoading = cb => {
-    setTimeout(cb, 500);
-  };
-
   componentDidMount() {
-    this.simulateLongLoading(this.fetchDog);
+    this.fetchDog();
   }
 
   componentDidUpdate(prevProps) {
@@ -48,7 +44,7 @@ class DogViewer extends Component {
       this.setState({
         loading: true
       });
-      this.simulateLongLoading(this.fetchDog);
+      this.fetchDog();
     }
   }
 
