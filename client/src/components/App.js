@@ -25,7 +25,8 @@ class App extends Component {
       } else {
         // load a new dog if you typed a breed
         this.setState({
-          breed: event.target.value
+          breed: event.target.value,
+          iteration: this.state.iteration + 1
         });
         event.target.value = "";
       }
