@@ -16,7 +16,6 @@ class App extends Component {
   onKeyDown = event => {
     if (event.keyCode === 13) {
       // 13 is the enter key
-      // load a new dog if you typed a breed
       this.setState({
         breed: event.target.value
       });
@@ -31,7 +30,7 @@ class App extends Component {
         <label className="App-label" htmlFor="dog-breed">
           enter dog breed:{" "}
         </label>
-        <input onKeyDown={this.onKeyDown} id="dog-breed" autocomplete="off" />
+        <input onKeyDown={this.onKeyDown} id="dog-breed" autoComplete="off" />
         <GoodBoiMeter breed={breed} />
         <DogViewer breed={breed} />
       </div>
