@@ -37,10 +37,7 @@ class DogViewer extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (
-      prevProps.breed !== this.props.breed ||
-      prevProps.iteration != this.props.iteration
-    ) {
+    if (this.props.breed !== prevProps.breed) {
       this.setState({
         loading: true
       });
