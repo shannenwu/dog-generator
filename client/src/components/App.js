@@ -45,7 +45,7 @@ class App extends Component {
     return (
       <div className="u-flex u-flexColumn u-flex-alignCenter">
         <label className="App-label" htmlFor="dog-breed">
-          enter dog breed:{" "}
+          enter dog breed:
         </label>
         <input
           value={input}
