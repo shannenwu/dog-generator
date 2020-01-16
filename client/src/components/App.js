@@ -39,7 +39,7 @@ class App extends Component {
         <label className="App-label" htmlFor="dog-breed">
           enter dog breed:{" "}
         </label>
-        <input onKeyDown={this.onKeyDown} id="dog-breed" autocomplete="off" />
+        <input onKeyDown={this.onKeyDown} id="dog-breed" autoComplete="off" />
         <GoodBoiMeter breed={breed} />
         <DogViewer breed={breed} iteration={iteration} />
       </div>
